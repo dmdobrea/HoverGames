@@ -1,3 +1,10 @@
+/*
+ * The PoC program for Human Detection (HD)
+ *
+ * @author Dan-Marius Dobrea
+ * Program developed for: HoverGames Challenge 1: Fight Fire with Flyers
+ */
+
 #include <iostream>
 #include <opencv2/opencv.hpp>
 #include <opencv2/objdetect/objdetect.hpp>
