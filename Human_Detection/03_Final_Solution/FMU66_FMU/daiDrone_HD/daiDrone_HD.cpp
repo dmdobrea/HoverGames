@@ -1,3 +1,12 @@
+/**
+ * @file daiDrone_HD.cpp
+ *
+ * Program used to receive the Human Detection information from the RPi
+ *
+ * @author Dan-Marius Dobrea
+ * Program developed for: HoverGames Challenge 1: Fight Fire with Flyers
+ */
+
 #include "daiDrone_HD.h"
 #include <px4_log.h>
 
