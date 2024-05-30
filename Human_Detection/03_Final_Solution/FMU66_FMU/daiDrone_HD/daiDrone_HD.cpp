@@ -141,11 +141,11 @@ int readingRPi_HumanDetection (int argc, char *argv[])
 
 //TIMER:
 	/* Set timer timeout action =============================================================================================>*/
-    	act.sa_sigaction = timer_expiration_HD;	//timer timeout notify function
+    	act.sa_sigaction = timer_expiration_HD;			//timer timeout notify function
 	act.sa_flags     = SA_SIGINFO;
 
-	(void)sigfillset(&act.sa_mask);				//initializes the signal set specified by "act.sa_mask"
-	(void)sigdelset (&act.sa_mask, TIMER_HD_SIGNAL);	//This function deletes the signal TIMER_HD_SIGNAL
+	sigfillset(&act.sa_mask);				//initializes the signal set specified by "act.sa_mask"
+	sigdelset (&act.sa_mask, TIMER_HD_SIGNAL);		//This function deletes the signal TIMER_HD_SIGNAL
 								//from the signal set specified by set
 
 	status = sigaction(TIMER_HD_SIGNAL, &act, &oact);	//This function allows the calling task ("timer_expiration")
