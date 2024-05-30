@@ -26,7 +26,7 @@ static void usageHD(void);
 /* Variables */
 static bool threadHD_should_exit = false;		/**< Daemon exit flag */
 static bool threadHD_running     = false;		/**< Daemon status flag */
-static int  deamon_HD_task;						/**< Handle of deamon task / thread */
+static int  deamon_HD_task;				/**< Handle of deamon task / thread */
 
 bool verbose = false;
 sem_t timer_sem_HD;
