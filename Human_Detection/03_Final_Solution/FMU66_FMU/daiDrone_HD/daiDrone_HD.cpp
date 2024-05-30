@@ -111,12 +111,12 @@ int readingRPi_HumanDetection (int argc, char *argv[])
 	struct sigaction   oact;
 	struct sigevent    notify;
 	struct itimerspec  timer;
-    timer_t            timerid;
+	timer_t            timerid;
 
 	int                status;
 
 	//I2C
-	dd_RPi_i2c		   commRPi;
+	dd_RPi_i2c	   commRPi;
 	unsigned char	   buff[10];
 
 	/* read arguments */
@@ -141,18 +141,18 @@ int readingRPi_HumanDetection (int argc, char *argv[])
 
 //TIMER:
 	/* Set timer timeout action =============================================================================================>*/
-    act.sa_sigaction = timer_expiration_HD;	//timer timeout notify function
+    	act.sa_sigaction = timer_expiration_HD;	//timer timeout notify function
 	act.sa_flags     = SA_SIGINFO;
 
-	(void)sigfillset(&act.sa_mask);							//initializes the signal set specified by "act.sa_mask"
+	(void)sigfillset(&act.sa_mask);				//initializes the signal set specified by "act.sa_mask"
 	(void)sigdelset (&act.sa_mask, TIMER_HD_SIGNAL);	//This function deletes the signal TIMER_HD_SIGNAL
-															//from the signal set specified by set
+								//from the signal set specified by set
 
 	status = sigaction(TIMER_HD_SIGNAL, &act, &oact);	//This function allows the calling task ("timer_expiration")
-	if (status != OK)										//to specify the action to be associated with a specific signal
+	if (status != OK)					//to specify the action to be associated with a specific signal
 		{
 		if (verbose) {printf("\n   ERROR: %s: sigaction failed, status=%d\n", __FUNCTION__, status);}
-	    goto errorout;
+	    	goto errorout;
 		}
 
 	/* Create the POSIX timer ==============================================================================================>*/
@@ -183,7 +183,7 @@ int readingRPi_HumanDetection (int argc, char *argv[])
 //MAIN
 	//main code of the function thread is here
 	while (!threadHD_should_exit)
-		{
+	{
 	    status = sem_wait(&timer_sem_HD);
 
 	    if (status != 0)
@@ -222,7 +222,7 @@ int readingRPi_HumanDetection (int argc, char *argv[])
     		else
     			{printf ("\n No human(s) detected!\n\n");}
     		}
-	    }
+	}
 
 errorout:
 	sem_destroy(&timer_sem_HD);								//destroy the un-named semaphore "timer_sem_HD"
