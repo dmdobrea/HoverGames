@@ -241,10 +241,12 @@ static void timer_expiration_HD (int signo, siginfo_t *info, void *ucontext)
   	  {if (verbose) {PX4_INFO ("\n   ERROR: expected signo = %d but received signo=%d\n" , TIMER_HD_SIGNAL, signo);}}
   else
   	  {
-	  {if (verbose) {PX4_INFO ("\n   Timer fired!");}}
+	  if (verbose) {PX4_INFO ("\n   Timer fired!");}
+		  
 	  status = sem_post(&timer_sem_HD);
-      if (status != OK)
-      	  {if (verbose) {PX4_INFO ("\n   ERROR: sem_post failed\n");}}
+		  
+      	  if (status != OK)
+      	  	{if (verbose) {PX4_INFO ("\n   ERROR: sem_post failed\n");}}
       }
 }
 
