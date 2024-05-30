@@ -168,7 +168,7 @@ int readingRPi_HumanDetection (int argc, char *argv[])
 	  	  }
 
 	/* Start the POSIX timer ================================================================================================>*/
-	timer.it_value.tv_sec     = 2; /* initial value 2 sec. - shouldn't set to 0 */
+	timer.it_value.tv_sec     = 2; /* initial value 2 seconds */
 	timer.it_value.tv_nsec    = 0;
 	timer.it_interval.tv_sec  = 1;	//1 second
 	timer.it_interval.tv_nsec = 0;
