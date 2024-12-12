@@ -319,7 +319,7 @@ int main(int argc, char **argv)
         {
         printf ("\n I2C slave thread created successfully.\n");
 
-		CPU_ZERO(&cpuset);
+	CPU_ZERO(&cpuset);
         CPU_SET (0, &cpuset);
         
         err = pthread_setaffinity_np(tid[4], sizeof(cpu_set_t), &cpuset);
