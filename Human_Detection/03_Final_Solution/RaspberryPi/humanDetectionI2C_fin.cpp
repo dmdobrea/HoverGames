@@ -147,7 +147,7 @@ int main(int argc, char **argv)
 	
 // II. Checking the main program's requirements =================================================================
 
-	if ( getuid() != 0 ) 
+    if ( getuid() != 0 ) 
         {
         printf("\n You must run this program as root. Exiting.\n\n");
         return -1;
@@ -168,10 +168,10 @@ int main(int argc, char **argv)
 
     timeToQuit = 0;
     
-    sem_init(&semCPU1,            0, 0); 
-    sem_init(&semCPU2,            0, 0); 
-    sem_init(&semCPU3,            0, 0);
-    sem_init(&semClasifDataReady, 0, 0);
+    sem_init (&semCPU1,            0, 0); 
+    sem_init (&semCPU2,            0, 0); 
+    sem_init (&semCPU3,            0, 0);
+    sem_init (&semClasifDataReady, 0, 0);
     
     //------------------------------------------------------------------
     CPU_ZERO (&cpuset); 	/* clear all CPUs */
@@ -231,10 +231,10 @@ int main(int argc, char **argv)
         return -1;
         }
 
-	// Run the detector with default parameters. To get a higher hit-rate
+    // Run the detector with default parameters. To get a higher hit-rate
     // (and more false alarms, respectively), decrease the hitThreshold and
     // groupThreshold (set groupThreshold to 0 to turn off the grouping completely).
-   	hog1.detectMultiScale(img, found, 0, Size(8,8), Size(), 1.05, 2, false);
+    hog1.detectMultiScale(img, found, 0, Size(8,8), Size(), 1.05, 2, false);
     
     //if (showResult) imshow("People detector", img);     
    t2 = getTickCount();
@@ -255,7 +255,7 @@ int main(int argc, char **argv)
         {
         printf ("\n Imgs grab thread created successfully.\n");
 
-		CPU_ZERO(&cpuset);
+	CPU_ZERO(&cpuset);
         CPU_SET (0, &cpuset);
         
         err = pthread_setaffinity_np(tid[3], sizeof(cpu_set_t), &cpuset);
@@ -271,7 +271,7 @@ int main(int argc, char **argv)
         {
         printf ("\n Thread 1 created successfully.\n");
 
-		CPU_ZERO(&cpuset);
+	CPU_ZERO(&cpuset);
         CPU_SET (1, &cpuset);
         
         err = pthread_setaffinity_np(tid[0], sizeof(cpu_set_t), &cpuset);
@@ -287,7 +287,7 @@ int main(int argc, char **argv)
         {
         printf ("\n Thread 2 created successfully.\n");        
 
-		CPU_ZERO(&cpuset);
+	CPU_ZERO(&cpuset);
         CPU_SET (2, &cpuset);
         
         err = pthread_setaffinity_np(tid[1], sizeof(cpu_set_t), &cpuset);
@@ -303,7 +303,7 @@ int main(int argc, char **argv)
         {
         printf ("\n Thread 3 created successfully.\n");        
         
-		CPU_ZERO(&cpuset);
+	CPU_ZERO(&cpuset);
         CPU_SET (3, &cpuset);
         
         err = pthread_setaffinity_np(tid[2], sizeof(cpu_set_t), &cpuset);
